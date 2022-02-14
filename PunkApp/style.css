@@ -6,3 +6,23 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.beerGrid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  background-color:rgb(16, 47, 78);
+  align-content: center;
+}
+
+.beerGrid > div {
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 10px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.beerGrid > div >img {
+  max-width: 200px;
+  max-height: 200px;
+  margin-top: 5px;
+}
