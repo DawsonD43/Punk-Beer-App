@@ -11,18 +11,18 @@
 <body>
   <div id="app">
     <h1>{{ message }}</h1>
-    <form>
-      <div class="search-box">
-        <input type="text" placeholder="Search" id="searchbar">
-        <button type="submit" @click="search()">Search</button>
-      </div>
-    </form>
+    <div class="search-box">
+      <input id="query">
+      <button type="button" @click="search()">Search</button>
+      <button type="button" @click="clearSearch()">Clear</button>
+    </div>
     <hr>
     <div v-for="beer in beerList" class="beerGrid" id="grid">
-      <div>
+      <div id="beerDet">
         <h3>{{beer.name}}</h3>
         <h4>ABV: {{beer.abv}}%</h4>
-        <img v-bind:src=beer.image_url alt=beer.name @click="viewDetails(beer)">
+        <img v-if="beer.image_url != null" v-bind:src=beer.image_url alt=beer.name>
+        <img v-else src="img/BrewDog-Logo1-1.png" alt="BrewDog Logo">
         <h5>{{beer.description}}</h5>
       </div>
     </div>

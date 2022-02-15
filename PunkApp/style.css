@@ -10,7 +10,7 @@
 .beerGrid {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  background-color:rgb(16, 47, 78);
+  background-color: rgb(16, 47, 78);
   align-content: center;
 }
 
@@ -21,8 +21,12 @@
   text-align: center;
 }
 
-.beerGrid > div >img {
+.beerGrid > div > img {
   max-width: 200px;
   max-height: 200px;
   margin-top: 5px;
+}
+
+h5 {
+  padding: 8px;
 }

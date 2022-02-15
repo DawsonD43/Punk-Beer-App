@@ -12,15 +12,21 @@ let vm = {
   },
   methods: {
     search() {
-      var tmp = document.getElementById("searchbar").value;
+      let val = document.getElementById("query").value;
+      this.query = val;
       axios
-        .get("https://api.punkapi.com/v2/beers?beer_name=" + tmp)
+        .get("https://api.punkapi.com/v2/beers?beer_name=" + this.query)
         .then((r) => {
+          console.log("here");
+          console.log(r.data);
           this.beerList = r.data;
-          alert("Here");
           if (r.data.length > 0) {
             this.foundBeer = true;
+            this.viewDetails(this.beerList);
           }
+        })
+        .catch((error) => {
+          console.log(error);
         });
     },
     defaultView() {
@@ -34,28 +40,28 @@ let vm = {
       axios.get("https://api.punkapi.com/v2/beers");
       this.beerList = [];
       this.query = "";
+      this.defaultView();
     },
-    // viewDetails(beer) {
-    //   this.clearDiv("grid");
-    //   let name = beer.name;
-    //   let ingredients = beer.ingredients;
-    //   let desc = beer.description;
-    //   var elemDiv = document.createElement("div");
-    //   elemDiv.className = "details";
-    //   var h = document.createElement("h1");
-    //   h.textContent = name;
-    //   console.log(ingredients);
-    // },
-    // clearDiv(elem) {
-    //   var div = document.getElementById(elem);
-    //   while (div.firstChild) {
-    //     div.removeChild(div.firstChild);
-    //   }
-    // },
+    viewDetails(beer) {
+      // this.clearDiv("grid");
+      console.log(toString(beer[0].ingredients));
+      var div = document.getElementById("beerDet");
+      let h = document.createElement("h5");
+      let ing = beer.ingredients;
+      let content = document.createTextNode(ing);
+      h.appendChild(content);
+      div.appendChild(h);
+    },
+    clearDiv(elem) {
+      var div = document.getElementById(elem);
+      while (div.firstChild) {
+        div.removeChild(div.firstChild);
+      }
+    },
   },
-  // beforeMount() {
-  //   this.defaultView();
-  // },
+  beforeMount() {
+    this.defaultView();
+  },
 };
 
 let app = Vue.createApp(vm).mount("#app");
