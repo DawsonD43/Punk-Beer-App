@@ -1,3 +1,11 @@
+/**
+ * @author Dawson Dauphianis
+ * dawsondauphinais43@gmail.com
+ * 
+ * @description The backend for the web application. This handles different API calls for the web app.
+ * 
+ * date last modified: 02/15/2022
+ */
 import "./style.css";
 import axios from "axios";
 
@@ -11,6 +19,10 @@ let vm = {
     };
   },
   methods: {
+    /**
+     * @author Dawson Dauphinais 
+     * @description Handles the search functionality of the web application.
+     */
     search() {
       let val = document.getElementById("query").value;
       this.query = val;
