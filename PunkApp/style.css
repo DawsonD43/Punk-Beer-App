@@ -3,30 +3,39 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #85c7f2;
   margin-top: 60px;
 }
 
 .beerGrid {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  background-color: rgb(16, 47, 78);
-  align-content: center;
+  background-color: #4c4c4c;
+  padding: 8px;
+  display: inline-block;
+  margin: 10px;
 }
 
-.beerGrid > div {
-  background-color: rgba(255, 255, 255, 0.7);
-  margin: 10px;
-  max-width: 300px;
-  text-align: center;
+.gridItem {
+  background-color: rgba(255, 255, 255, 0.4);
+  min-width: 350px;
+  min-height: 350px;
 }
 
 .beerGrid > div > img {
   max-width: 200px;
   max-height: 200px;
-  margin-top: 5px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.gridItem h3 {
+  padding: 5px;
 }
 
 h5 {
   padding: 8px;
+  margin: 8px;
+}
+
+body {
+  background-color: #d1d1d1;
 }

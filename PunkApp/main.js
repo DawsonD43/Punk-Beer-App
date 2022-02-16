@@ -1,9 +1,9 @@
 /**
  * @author Dawson Dauphianis
  * dawsondauphinais43@gmail.com
- * 
+ *
  * @description The backend for the web application. This handles different API calls for the web app.
- * 
+ *
  * date last modified: 02/15/2022
  */
 import "./style.css";
@@ -14,13 +14,13 @@ let vm = {
     return {
       message: "Hey, Punk!",
       beerList: [],
-      foundBeer: false,
       query: "",
+      canView: false,
     };
   },
   methods: {
     /**
-     * @author Dawson Dauphinais 
+     * @author Dawson Dauphinais
      * @description Handles the search functionality of the web application.
      */
     search() {
@@ -33,8 +33,7 @@ let vm = {
           console.log(r.data);
           this.beerList = r.data;
           if (r.data.length > 0) {
-            this.foundBeer = true;
-            this.viewDetails(this.beerList);
+            this.canView = true;
           }
         })
         .catch((error) => {
@@ -44,31 +43,27 @@ let vm = {
     defaultView() {
       axios.get("https://api.punkapi.com/v2/beers").then((r) => {
         this.beerList = r.data;
-        this.foundBeer = true;
         this.query = "";
+        this.canView = false;
+        this.clearSearch();
       });
     },
     clearSearch() {
-      axios.get("https://api.punkapi.com/v2/beers");
-      this.beerList = [];
       this.query = "";
-      this.defaultView();
+      const inputField = document.getElementById("query");
+      inputField.value = "";
     },
     viewDetails(beer) {
-      // this.clearDiv("grid");
-      console.log(toString(beer[0].ingredients));
-      var div = document.getElementById("beerDet");
-      let h = document.createElement("h5");
-      let ing = beer.ingredients;
-      let content = document.createTextNode(ing);
-      h.appendChild(content);
-      div.appendChild(h);
-    },
-    clearDiv(elem) {
-      var div = document.getElementById(elem);
-      while (div.firstChild) {
-        div.removeChild(div.firstChild);
-      }
+      console.log(beer);
+      axios
+        .get("https://api.punkapi.com/v2/beers?beer_name=" + beer.name)
+        .then((r) => {
+          this.beerList = r.data;
+          this.canView = true;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
   beforeMount() {

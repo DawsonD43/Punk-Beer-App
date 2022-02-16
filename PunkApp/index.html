@@ -12,20 +12,22 @@
 
 <body>
   <div id="app">
-    <h1>{{ message }}</h1>
-    <div class="search-box">
-      <input id="query">
-      <button type="button" @click="search()">Search</button>
-      <button type="button" @click="clearSearch()">Clear</button>
+    <div id="banner">
+      <h1>{{ message }}</h1>
+      <div class="search-box">
+        <input id="query" placeholder="Find a beer...">
+        <button type="button" @click="search()" id="searchbtn">Search</button>
+        <button type="button" @click="clearSearch()" id="clearbtn">Clear</button>
+        <button type="button" @click="defaultView()" id="homeBtn">Home</button>
+      </div>
     </div>
-    <hr>
     <div v-for="beer in beerList" class="beerGrid" id="grid">
-      <div id="beerDet">
+      <div class="gridItem" id="beerDet" @click="viewDetails(beer)" style="cursor: pointer">
         <h3>{{beer.name}}</h3>
         <h4>ABV: {{beer.abv}}%</h4>
         <img v-if="beer.image_url != null" v-bind:src=beer.image_url alt=beer.name>
         <img v-else src="img/BrewDog-Logo1-1.png" alt="BrewDog Logo">
-        <h5>{{beer.description}}</h5>
+        <h5 v-if="canView == true">{{beer.description}}</h5>
       </div>
     </div>
   </div>
