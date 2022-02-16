@@ -29,8 +29,6 @@ let vm = {
       axios
         .get("https://api.punkapi.com/v2/beers?beer_name=" + this.query)
         .then((r) => {
-          console.log("here");
-          console.log(r.data);
           this.beerList = r.data;
           if (r.data.length > 0) {
             this.canView = true;
@@ -38,6 +36,19 @@ let vm = {
         })
         .catch((error) => {
           console.log(error);
+        });
+    },
+    viewRandom() {
+      axios
+        .get("https://api.punkapi.com/v2/beers/random")
+        .then((r) => {
+          this.beerList = r.data;
+          if (r.data.length > 0) {
+            this.canView = true;
+          }
+        })
+        .catch((e) => {
+          console.log(e);
         });
     },
     defaultView() {
