@@ -24,7 +24,7 @@
     <div v-for="beer in beerList" class="beerGrid" id="grid">
       <div class="gridItem" id="beerDet" @click="viewDetails(beer)" style="cursor: pointer">
         <h3>{{beer.name}}</h3>
-        <h4>ABV: {{beer.abv}}%</h4>
+        <h4 v-if="canView == true">ABV: {{beer.abv}}%</h4>
         <img v-if="beer.image_url != null" v-bind:src=beer.image_url alt=beer.name>
         <img v-else src="img/BrewDog-Logo1-1.png" alt="BrewDog Logo">
         <h5 v-if="canView == true">{{beer.description}}</h5>

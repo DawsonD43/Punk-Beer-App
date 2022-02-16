@@ -53,10 +53,15 @@ let vm = {
       const inputField = document.getElementById("query");
       inputField.value = "";
     },
+    /**
+     * @author Dawson Dauphinais
+     * @param beer the current beer object
+     * @description Allows the beer description to be viewed by the user.
+     */
     viewDetails(beer) {
       console.log(beer);
       axios
-        .get("https://api.punkapi.com/v2/beers?beer_name=" + beer.name)
+        .get("https://api.punkapi.com/v2/beers/" + beer.id)
         .then((r) => {
           this.beerList = r.data;
           this.canView = true;
