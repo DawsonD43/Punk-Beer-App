@@ -23,12 +23,18 @@
 .beerGrid > div > img {
   max-width: 200px;
   max-height: 200px;
-  margin: 5px;
+  margin: 15px;
   padding: 5px;
 }
 
 .gridItem h3 {
   padding: 5px;
+  margin: 0px;
+}
+
+.gridItem h4{
+  padding: 5px;
+  margin: 0px;
 }
 
 h5 {

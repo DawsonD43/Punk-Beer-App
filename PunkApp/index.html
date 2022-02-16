@@ -29,6 +29,8 @@
         <img v-if="beer.image_url != null" v-bind:src=beer.image_url alt=beer.name>
         <img v-else src="img/BrewDog-Logo1-1.png" alt="BrewDog Logo">
         <h5 v-if="canView == true">{{beer.description}}</h5>
+        <br>
+        <h4 v-if="canView == true">Goes well with: {{beer.food_pairing[0]}}, {{beer.food_pairing[1]}}, {{beer.food_pairing[2]}} </h4>
       </div>
     </div>
   </div>
