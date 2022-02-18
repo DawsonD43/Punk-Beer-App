@@ -32,7 +32,7 @@
   margin: 0px;
 }
 
-.gridItem h4{
+.gridItem h4 {
   padding: 5px;
   margin: 0px;
 }
@@ -46,6 +46,6 @@ body {
   background-color: #d1d1d1;
 }
 
-#query{
-  height:35px;
+#query {
+  height: 35px;
 }
